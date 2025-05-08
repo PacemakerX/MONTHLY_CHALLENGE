@@ -2,20 +2,31 @@ from django.shortcuts import render
 from django.http import HttpResponse,HttpResponseNotFound
 
 
+challenges = {
+    'january': 'Start a daily journal and write one positive thing each day.',
+    'february': 'Perform a random act of kindness every week.',
+    'march': 'Walk 10,000 steps every day.',
+    'april': 'Try a new healthy recipe each week.',
+    'may': 'Spend 30 minutes outside every day.',
+    'june': 'Read one book by the end of the month.',
+    'july': 'Learn a new skill or hobby.',
+    'august': 'Declutter one area of your home each week.',
+    'september': 'Practice mindfulness or meditation for 10 minutes daily.',
+    'october': 'Complete a creative project (e.g., painting, writing, or crafting).',
+    'november': 'Write down three things you are grateful for every day.',
+    'december': 'Reflect on the year and set goals for the next year.',
+}
 def monthly_by_name(request, month): # django will pass the same parameter, if use month in urls, then month will be passed in views
     
-    months = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 
-              'august', 'september', 'october', 'november', 'december']
-    if month.lower() not in months:
+    if month.lower() not in challenges:
         return HttpResponseNotFound("This month is not supported!")
     
-    return HttpResponse("This month of "+month +" works for me ")
+    return HttpResponse("The challenge for the month of "+month +" is "+challenges.get(month))
 
-def monthly_by_number(request,month):
-
-    if (month>12 or month<1):
+def monthly_by_number(request, month):
+    if month > 12 or month < 1:
         return HttpResponseNotFound("This month is not supported")
-    else:
-        months = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 
-              'august', 'september', 'october', 'november', 'december']
-        return monthly_by_name(request,months[month-1])     
+    
+    month_names = list(challenges.keys())
+    month_name = month_names[month - 1]
+    return monthly_by_name(request, month_name)
