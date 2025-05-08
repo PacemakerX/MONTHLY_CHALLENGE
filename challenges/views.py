@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse,HttpResponseNotFound
 
 def january(request):
     return HttpResponse("This works January!!!")
@@ -36,3 +36,13 @@ def november(request):
 
 def december(request):
     return HttpResponse("This works December!!!")
+
+def monthly(request, month): # django will pass the same parameter, if use month in urls, then month will be passed in views
+    
+    challenge_text= ""+ month
+    
+    months = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 
+              'august', 'september', 'october', 'november', 'december']
+    if month.lower() not in months:
+        return HttpResponseNotFound("This month is not supported!")
+    return HttpResponse("This month of "+challenge_text +" works for me ")
