@@ -1,67 +1,70 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Monthly Challenge</title>
-    <style>
-      body {
-        margin: 0;
-        padding: 0;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background-color: #f4f6f8;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-      }
+{% extends "base.html" %}
 
-      .container {
-        background-color: #ffffff;
-        padding: 40px;
-        border-radius: 12px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        max-width: 500px;
-        width: 100%;
-        text-align: center;
-      }
+    {% block page_title%}
+    
+    Monthly Challenge
+    
+    {%endblock%}
 
-      h1 {
-        color: #2c3e50;
-        margin-bottom: 24px;
-      }
+    {% block page_styles%}
+          body {
+            margin: 0;
+            padding: 0;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f6f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+          }
 
-      ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-      }
+          .container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+          }
 
-      li {
-        margin: 12px 0;
-      }
+          h1 {
+            color: #2c3e50;
+            margin-bottom: 24px;
+          }
 
-      a {
-        text-decoration: none;
-        color: #3498db;
-        font-size: 18px;
-        transition: color 0.2s ease;
-        font-weight: 500;
-      }
+          ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+          }
 
-      a:hover {
-        color: #1d6fa5;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <h1>Monthly Challenge for You</h1>
-      <ul>
-        {% for month in months %}
-        <li><a href="{% url 'month-challenge' month %}">{{ month|capfirst }}</a></li>
-        {% endfor %}
-      </ul>
-    </div>
-  </body>
-</html>
+          li {
+            margin: 12px 0;
+          }
+
+          a {
+            text-decoration: none;
+            color: #3498db;
+            font-size: 18px;
+            transition: color 0.2s ease;
+            font-weight: 500;
+          }
+
+          a:hover {
+            color: #1d6fa5;
+          }
+    {% endblock%}
+
+    {% block page_content%}
+        <div class="container">
+          <h1>Monthly Challenge for You</h1>
+          <ul>
+            {% for month in months %}
+            <li>
+              <a href="{% url 'month-challenge' month %}">{{ month|capfirst }}</a>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+    {% endblock%}
