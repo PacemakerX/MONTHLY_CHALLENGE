@@ -28,11 +28,10 @@
 
 - **Visual Studio Code**: Primary code editor with GitHub Copilot integration.
 - **Git**: Version control and collaboration.
-- **SQLite**: Lightweight database for development and testing.
 
 ## ❓ Why Monthly Challenges?
 
-The **Monthly Challenges** project was created to encourage users to take on small, manageable challenges that can lead to significant personal growth over time. Whether it's starting a new habit, learning a skill, or simply reflecting on the past month, this application provides a structured way to stay motivated and engaged throughout the year.
+The **Monthly Challenges** project was created to encourage me to take on small, manageable challenges that can lead to significant personal growth over time. Whether it's starting a new habit, learning a skill, or simply reflecting on the past month, this application provides a structured way to stay motivated and engaged throughout the year.
 
 ## Link to the Repository:
 
