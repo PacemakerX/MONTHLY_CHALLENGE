@@ -21,7 +21,7 @@ challenges = {
 def monthly_by_name(request, month): # django will pass the same parameter, if use month in urls, then month will be passed in views
     
     if month.lower() not in challenges:
-        return HttpResponseNotFound("This month is not supported!")
+        return  render(request, "404.html")
     
     return render(request,"challenges/challenges.html",{
             "month_name": month,
@@ -30,7 +30,7 @@ def monthly_by_name(request, month): # django will pass the same parameter, if u
 
 def monthly_by_number(request, month):
     if month > 12 or month < 1:
-        raise HttpResponseNotFound("This month is not supported!")
+        return  render(request, "404.html")
     
     month_names = list(challenges.keys())
     month_name = month_names[month - 1]
