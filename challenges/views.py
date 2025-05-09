@@ -23,8 +23,10 @@ def monthly_by_name(request, month): # django will pass the same parameter, if u
     if month.lower() not in challenges:
         return HttpResponseNotFound("This month is not supported!")
     
-    response_data=f"<h1>{challenges.get(month)}</h1>"
-    return HttpResponse(response_data)
+    return render(request,"challenges/challenges.html",{
+            "month_name": month.capitalize(),
+            "monthly_challenge": challenges.get(month)
+        })
 
 def monthly_by_number(request, month):
     if month > 12 or month < 1:
@@ -37,5 +39,7 @@ def monthly_by_number(request, month):
     return HttpResponseRedirect(redirect_path)
 
 def monthly_rdirect(request):
-    response_data=render_to_string("challenges/challenges.html")
-    return HttpResponse(response_data)
+    months_list = list(challenges.keys())
+    return render(request, "challenges/challenges.html", {
+        "months": months_list
+    })
