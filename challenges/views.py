@@ -24,7 +24,7 @@ def monthly_by_name(request, month): # django will pass the same parameter, if u
         return HttpResponseNotFound("This month is not supported!")
     
     return render(request,"challenges/challenges.html",{
-            "month_name": month.capitalize(),
+            "month_name": month,
             "monthly_challenge": challenges.get(month)
         })
 
