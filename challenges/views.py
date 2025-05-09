@@ -40,6 +40,6 @@ def monthly_by_number(request, month):
 
 def monthly_rdirect(request):
     months_list = list(challenges.keys())
-    return render(request, "challenges/challenges.html", {
+    return render(request, "challenges/index.html", {
         "months": months_list
     })
