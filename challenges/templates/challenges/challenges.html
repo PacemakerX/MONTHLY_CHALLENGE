@@ -3,10 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Monthly Challenge</title>
+    <title>{{month_name}} Challenge</title>
   </head>
   <body>
-    <h1>This month's challenge</h1>
-    <h2>Let's get started</h2>
+    {% if month_name %}
+    <h1>This {{month_name}}'s Challenge is</h1>
+    {% endif %}
+    <h2>{{monthly_challenge}}</h2>
+    <ul>
+      {% for month in months %}
+      <li><a href="{% url 'month-challenge' month %}">{{ month }}</a></li>
+      {% endfor %}
+    </ul>
   </body>
 </html>
