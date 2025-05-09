@@ -72,9 +72,10 @@
             color: #0056b3;
           }
     {% endblock%}
-
+    
     {% block page_content%}
-
+    {% include "./shared/header.html/" %}
+    
         <div class="container">
           {% if month_name %}
           <h1>This {{ month_name|title }}'s Challenge Is</h1>
