@@ -37,9 +37,70 @@ def monthly_by_number(request, month):
     return HttpResponseRedirect(redirect_path)
 
 def monthly_rdirect(request):
-    response_data="<ol>"
-    for i in challenges:
-        response_data += f"<li><a href='{reverse('month-challenge', args=[i])}'>{i.capitalize()}</a></li>"
-    response_data+="</ol>"
+    response_data = """
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Monthly Challenges</title>
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                background-color: #f4f6f8;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+            }
+            .container {
+                background-color: #ffffff;
+                padding: 40px 30px;
+                border-radius: 12px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+                width: 100%;
+                max-width: 500px;
+                text-align: center;
+            }
+            h1 {
+                margin-bottom: 24px;
+                color: #2c3e50;
+            }
+            ol {
+                padding-left: 0;
+                list-style: none;
+            }
+            li {
+                margin: 12px 0;
+            }
+            a {
+                text-decoration: none;
+                font-weight: 500;
+                color: #3498db;
+                font-size: 18px;
+                transition: color 0.2s ease;
+            }
+            a:hover {
+                color: #1d6fa5;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Monthly Challenges</h1>
+            <ol>
+    """
+
+    for month in challenges:
+        url = reverse('month-challenge', args=[month])
+        response_data += f"<li><a href='{url}'>{month.capitalize()}</a></li>"
+
+    response_data += """
+            </ol>
+        </div>
+    </body>
+    </html>
+    """
+
     return HttpResponse(response_data)
-    
