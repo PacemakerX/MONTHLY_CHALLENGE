@@ -35,3 +35,11 @@ def monthly_by_number(request, month):
 
     redirect_path = reverse("month-challenge", args=[month_name])
     return HttpResponseRedirect(redirect_path)
+
+def monthly_rdirect(request):
+    response_data="<ol>"
+    for i in challenges:
+        response_data += f"<li><a href='{reverse('month-challenge', args=[i])}'>{i.capitalize()}</a></li>"
+    response_data+="</ol>"
+    return HttpResponse(response_data)
+    
